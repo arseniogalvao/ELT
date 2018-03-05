@@ -12,11 +12,11 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "6530cc9f-bfb0-4899-9766-75ec2fb576d9",
+						"id": "2b4a59f1-1626-4d1b-aa39-351b433976f7",
 						"type": "text/javascript",
 						"exec": [
-							"pm.test(\"Response time is less than 600ms\", function () {",
-							"    pm.expect(pm.response.responseTime).to.be.below(600);",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
 							"});",
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
 							"",
