@@ -1,0 +1,118 @@
+{
+	"info": {
+		"name": "ELT",
+		"_postman_id": "75198e50-38f0-4768-ae02-5efab36b8d51",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "QueststatusPlayer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7edd1100-6e25-4933-b647-5bce8eb9529b",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 300ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(300);",
+							"});",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"ProductName found ->\"+\"has - allLevelStatuses\"] = responseBody.has(\"allLevelStatuses\");",
+							"tests[\"Status productName has string->\"+jsonData.allLevelStatuses[0].levelId] = responseBody.has(\"1\");",
+							"//tests[\"ProductName found ->\"+jsonData.policy.policyId.productFamily] = jsonData.policy.policyId.productFamily === \"Financeiro\";",
+							"",
+							"////////////////////",
+							"///Validate Schema",
+							"////////////////////",
+							"var schema =  {",
+							"    \"$id\": \"https://games-qa.becker.com/jadm/get/queststatus/player/469/all\", ",
+							"    \"type\": \"object\", ",
+							"    \"definitions\": {}, ",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema#\", ",
+							"    \"properties\": {",
+							"      \"allLevelStatuses\": {",
+							"        \"$id\": \"/properties/allLevelStatuses\", ",
+							"        \"type\": \"array\", ",
+							"       \"items\": {",
+							"         \"$id\": \"/properties/allLevelStatuses/items\", ",
+							"         \"type\": \"object\", ",
+							"         \"properties\": {",
+							"           \"levelId\": {",
+							"             \"$id\": \"/properties/allLevelStatuses/items/properties/levelId\", ",
+							"             \"type\": \"integer\", ",
+							"             \"title\": \"The Levelid Schema \", ",
+							"             \"default\": 0, ",
+							"             \"examples\": [",
+							"               1",
+							"             ]",
+							"           }, ",
+							"           \"mainStarted\": {",
+							"             \"$id\": \"/properties/allLevelStatuses/items/properties/mainStarted\", ",
+							"             \"type\": \"boolean\", ",
+							"             \"title\": \"The Mainstarted Schema \", ",
+							"             \"default\": false, ",
+							"             \"examples\": [",
+							"               false",
+							"             ]",
+							"           }, ",
+							"           \"mainFinished\": {",
+							"             \"$id\": \"/properties/allLevelStatuses/items/properties/mainFinished\", ",
+							"             \"type\": \"boolean\", ",
+							"             \"title\": \"The Mainfinished Schema \", ",
+							"             \"default\": false, ",
+							"             \"examples\": [               false",
+							"             ]",
+							"           }, ",
+							"           \"completedAll\": {",
+							"             \"$id\": \"/properties/allLevelStatuses/items/properties/completedAll\", ",
+							"             \"type\": \"boolean\", ",
+							"             \"title\": \"The Completedall Schema \", ",
+							"             \"default\": false, ",
+							"             \"examples\": [",
+							"               false",
+							"             ]",
+							"           }",
+							"         }",
+							"       }",
+							"     }",
+							"   }",
+							" };",
+							"",
+							"tests[\"Valid issues schema-> \"+schema+\" <=> \"+jsonData] = tv4.validate(jsonData, schema);",
+							"console.log(\"Validation failed: \", tv4.error);",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://games-qa.becker.com/jadm/get/queststatus/player/469/all",
+					"protocol": "https",
+					"host": [
+						"games-qa",
+						"becker",
+						"com"
+					],
+					"path": [
+						"jadm",
+						"get",
+						"queststatus",
+						"player",
+						"469",
+						"all"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
