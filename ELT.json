@@ -1,0 +1,807 @@
+{
+	"info": {
+		"name": "ELT",
+		"_postman_id": "75198e50-38f0-4768-ae02-5efab36b8d51",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "jadm.services",
+			"description": "//*******************************************************\r\n//Author: Arsénio Galvão (D40789489)\r\n//Creation Date: MAR/26/2018\r\n//Description: Smoke test for underwritings\r\n//FeatureID: \r\n//Tag:\r\n// #WS; #Services; #gameportal.gameplay;\r\n//Revision: \r\n//         \r\n//********************************************************",
+			"item": [
+				{
+					"name": "register",
+					"description": "//*******************************************************\n//Author: Arsénio Galvão (D40789489)\n//Creation Date: MAR/26/2018\n//Description: Insert service registerPlayer\n//FeatureID: \n//Tag:\n// #WS; #Services; #jadm;\n//Revision: \n//         \n//********************************************************\n\nPOST /jadm/register/player\nServices.registerPlayer # Field(s): [data.id (int) {map: playId}, data.dNumber (string), data.realName (string), data.nickName (string), data.classId (int), data.gender (int) {0 = FEMALE, 1 = MALE}] | Example: [123, \"D40485965\", \"João Morais\", \"u256781493\", 21, 1]",
+					"item": [
+						{
+							"name": "TC1.registerPlayer - Success, correct data",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "97c03031-6f9d-4baf-9594-6423f428e52f",
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "data.id",
+											"value": "1035",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "data.dNumber",
+											"value": "D87654321",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "data.realName",
+											"value": "Automation Tester1",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "data.nickName",
+											"value": "u9176552",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "data.classId",
+											"value": "1039",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "data.gender",
+											"value": "1",
+											"type": "text",
+											"description": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/jadm/register/player",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"jadm",
+										"register",
+										"player"
+									]
+								},
+								"description": "Insert register of player+class in game portal\n\n\nSELECT * FROM gameportal.user where id = 469;\nSELECT * FROM gameportal.lesson;\nSELECT * FROM gameportal.gameplay where user_id = 469;\nSELECT * FROM jadm.player_gameportal_reflection;"
+							},
+							"response": []
+						},
+						{
+							"name": "TC2.registerPlayer - Success, wrong data",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "97c03031-6f9d-4baf-9594-6423f428e52f",
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "data.id",
+											"value": "99999",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "data.dNumber",
+											"value": "D99999999",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "data.realName",
+											"value": "Automation Tester1",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "data.nickName",
+											"value": "u9999999",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "data.classId",
+											"value": "9999",
+											"type": "text",
+											"description": ""
+										},
+										{
+											"key": "data.gender",
+											"value": "1",
+											"type": "text",
+											"description": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/jadm/register/player",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"jadm",
+										"register",
+										"player"
+									]
+								},
+								"description": "Insert register of player+class in game portal\n\n\nSELECT * FROM gameportal.user where id = 469;\nSELECT * FROM gameportal.lesson;\nSELECT * FROM gameportal.gameplay where user_id = 469;\nSELECT * FROM jadm.player_gameportal_reflection;"
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a35de04f-5209-4587-8545-f2ebdd749998",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "7b06235c-c644-4663-aa0a-1c5a127f97de",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "playerpref",
+					"description": "//*******************************************************\r\n//Author: Arsénio Galvão (D40789489)\r\n//Creation Date: MAR/27/2018\r\n//Description: Validate palyerpref, set, delete and get\r\n//FeatureID: \r\n//Tag:\r\n// #WS; #Services; #jadm;\r\n//Revision: \r\n//         \r\n//********************************************************\r\n\r\nPOST    /jadm/playerpref/delete                                         \t\t\r\nServices.deletePlayerPref\t\t\t\t\t# Field(s):\t\tdata.playId (int)\t|\tExample: 123\r\n\r\nPOST    /jadm/playerpref/deleteAll                                      \t\r\nServices.deletePlayerPrefs\t\t\t\t\t# Field(s):\t\tdata.playId (int)\t|\tExample: 123\r\n\r\nPOST    /jadm/playerpref/set                                            \t\t\r\nServices.setPlayerPref\t\t\t\t\t\t# Field(s):\t\t[data.playId (int), data.ppKey (string), data.ppVariableType (string), data.ppValue (string)]\t|\tExample: [123, \"Music Volume\", \"FLOAT\", \"0.8\"]\r\n\r\nGET \t/jadm/playerpref/player/{playId}\r\nServices.getPlayerPrefs \t\t\t\t\t# Parameter(s): playId (int) | Example: 123",
+					"item": [
+						{
+							"name": "TC1.deletePlayerPrefs - Delete all prefs",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9e31dd6f-20d8-4d7b-a074-28fa6d28fded",
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "data.playId",
+											"value": "99999",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/jadm/playerpref/deleteAll",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"jadm",
+										"playerpref",
+										"deleteAll"
+									]
+								},
+								"description": "Delete all prefs for a specific playerId"
+							},
+							"response": []
+						},
+						{
+							"name": "TC2.getPlayerPrefs - Get prefs of a specific playerId (NULL)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1bf7fef3-db8c-44b0-b797-0ded45c0cbaf",
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Total playerPrefs->\"+jsonData.playerPrefs.length] = jsonData.playerPrefs.length === 0;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "playId",
+											"value": "1030",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/jadm/playerpref/player/99999",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"jadm",
+										"playerpref",
+										"player",
+										"99999"
+									]
+								},
+								"description": "Get the information \"NULL\" of a specific playerId, that prefs as removed in the TC1."
+							},
+							"response": []
+						},
+						{
+							"name": "TC3_1.setPlayerPref - Insert prefs of a specific playerId (1x)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "86fa78b8-d5d2-4d89-a30d-9ad72d3d8ca4",
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "data.playId",
+											"value": "99999",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "data.ppKey",
+											"value": "AUT.Music Volume",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "data.ppVariableType",
+											"value": "FLOAT",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "data.ppValue",
+											"value": "0.6",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/jadm/playerpref/set",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"jadm",
+										"playerpref",
+										"set"
+									]
+								},
+								"description": "Insert prefs for one playId, Key = (playId+ppKey)."
+							},
+							"response": []
+						},
+						{
+							"name": "TC3_2.setPlayerPref - Insert prefs of a specific playerId (2x)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0d1bc9f3-f011-4ffb-887d-10f70db5570a",
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "data.playId",
+											"value": "99999",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "data.ppKey",
+											"value": "AUT.Paths System",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "data.ppVariableType",
+											"value": "INT",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "data.ppValue",
+											"value": "99",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/jadm/playerpref/set",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"jadm",
+										"playerpref",
+										"set"
+									]
+								},
+								"description": "Insert prefs for one playId, Key = (playId+ppKey)."
+							},
+							"response": []
+						},
+						{
+							"name": "TC3_3.setPlayerPref - Insert prefs of a specific playerId (3x)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cdd8c17d-fd23-478c-a9cf-d56758994824",
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "data.playId",
+											"value": "99999",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "data.ppKey",
+											"value": "AUT.Present",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "data.ppVariableType",
+											"value": "BOOL",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "data.ppValue",
+											"value": "1",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/jadm/playerpref/set",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"jadm",
+										"playerpref",
+										"set"
+									]
+								},
+								"description": "Insert prefs for one playId, Key = (playId+ppKey)."
+							},
+							"response": []
+						},
+						{
+							"name": "TC4.getPlayerPrefs - Get prefs of a specific playerId (3 diferent prefs)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "53bf1513-402c-4be0-8b6a-e2b67f99d677",
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Total playerPrefs->\" + jsonData.playerPrefs.length] = jsonData.playerPrefs.length === 3;",
+											"tests[\"playerPrefs[0].playId->\" + jsonData.playerPrefs[0].playId] = jsonData.playerPrefs[0].playId === 99999;",
+											"tests[\"playerPrefs[0].varKey->\" + jsonData.playerPrefs[0].varKey] = jsonData.playerPrefs[0].varKey === \"AUT.Music Volume\";",
+											"tests[\"playerPrefs[0].varType->\" + jsonData.playerPrefs[0].varType] = jsonData.playerPrefs[0].varType === \"FLOAT\";",
+											"tests[\"playerPrefs[0].varKey->\"+jsonData.playerPrefs[0].varValue] = jsonData.playerPrefs[0].varValue === \"0.6\";",
+											"",
+											"////////////////////",
+											"///Validate Schema",
+											"////////////////////",
+											"var schema =  {",
+											"    \"properties\": {",
+											"     \"playerPrefs\": {",
+											"       \"$id\": \"/properties/playerPrefs\", ",
+											"       \"type\": \"array\", ",
+											"       \"items\": {",
+											"         \"$id\": \"/properties/playerPrefs/items\", ",
+											"         \"type\": \"object\", ",
+											"         \"properties\": {",
+											"           \"playId\": {",
+											"             \"$id\": \"/properties/playerPrefs/items/properties/playId\", ",
+											"             \"type\": \"integer\", ",
+											"             \"title\": \"The Playid Schema \", ",
+											"             \"default\": 0, ",
+											"             \"examples\": [99999]",
+											"           }, ",
+											"           \"varKey\": {",
+											"             \"$id\": \"/properties/playerPrefs/items/properties/varKey\", ",
+											"             \"type\": \"string\", ",
+											"             \"title\": \"The Varkey Schema \", ",
+											"             \"default\": \"\", ",
+											"             \"examples\": [\"AUT.Paths System\"]",
+											"           }, ",
+											"           \"varType\": {",
+											"             \"$id\": \"/properties/playerPrefs/items/properties/varType\", ",
+											"             \"type\": \"string\", ",
+											"             \"title\": \"The Vartype Schema \", ",
+											"             \"default\": \"\", ",
+											"             \"examples\": [\"INT\"]",
+											"           }, ",
+											"           \"varValue\": {",
+											"             \"$id\": \"/properties/playerPrefs/items/properties/varValue\", ",
+											"             \"type\": \"string\", ",
+											"             \"title\": \"The Varvalue Schema \", ",
+											"             \"default\": \"\", ",
+											"             \"examples\": [\"99\"]",
+											"           }",
+											"         }",
+											"       }",
+											"     }",
+											"   }",
+											"};",
+											"",
+											"tests[\"Valid issues schema-> \"+schema+\" <=> \"+jsonData] = tv4.validate(jsonData, schema);",
+											"console.log(\"Validation failed: \", tv4.error);"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "playId",
+											"value": "1030",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/jadm/playerpref/player/99999",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"jadm",
+										"playerpref",
+										"player",
+										"99999"
+									]
+								},
+								"description": "Get the information 3 regsiter of a specific playId, that prefs as insertes in the TC3.x."
+							},
+							"response": []
+						},
+						{
+							"name": "TC5.deletePlayerPref - delete one ppKey of one playId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0b6470c7-c426-45d2-bb15-5c7ea8cd4cf2",
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "data.playId",
+											"value": "99999",
+											"description": "",
+											"type": "text"
+										},
+										{
+											"key": "data.ppKey",
+											"value": "AUT.Music Volume",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/jadm/playerpref/delete",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"jadm",
+										"playerpref",
+										"delete"
+									]
+								},
+								"description": "Delete one pref register for a specific playId (playId+ppKey)"
+							},
+							"response": []
+						},
+						{
+							"name": "TC6.getPlayerPrefs - Check if the last registir is correct removed (2 diferent prefs)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "639c5f19-b07c-4411-b33e-6748ef211900",
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Total playerPrefs->\" + jsonData.playerPrefs.length] = jsonData.playerPrefs.length === 2;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "playId",
+											"value": "1030",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/jadm/playerpref/player/99999",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"jadm",
+										"playerpref",
+										"player",
+										"99999"
+									]
+								},
+								"description": "Get the information 2 register of a specific playId, that prefs as insertes in the TC3.x & removed in TC5."
+							},
+							"response": []
+						},
+						{
+							"name": "TC7.deletePlayerPrefs - Delete all prefs",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9e31dd6f-20d8-4d7b-a074-28fa6d28fded",
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "data.playId",
+											"value": "99999",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/jadm/playerpref/deleteAll",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"jadm",
+										"playerpref",
+										"deleteAll"
+									]
+								},
+								"description": "Delete all prefs for a specific playerId."
+							},
+							"response": []
+						},
+						{
+							"name": "TC8.getPlayerPrefs - Get prefs of a specific playerId (NULL)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1bf7fef3-db8c-44b0-b797-0ded45c0cbaf",
+										"type": "text/javascript",
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;",
+											"",
+											"var jsonData = JSON.parse(responseBody);",
+											"tests[\"Total playerPrefs->\"+jsonData.playerPrefs.length] = jsonData.playerPrefs.length === 0;"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "playId",
+											"value": "1030",
+											"description": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/jadm/playerpref/player/99999",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"jadm",
+										"playerpref",
+										"player",
+										"99999"
+									]
+								},
+								"description": "Get the information \"NULL\" of a specific playId, that prefs as removed in the last TC."
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6c7822f8-9a7b-4525-9a33-6cd7f63720a5",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "96d15920-8661-4614-a839-79112a505859",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "evidence",
+					"description": "",
+					"item": [],
+					"_postman_isSubFolder": true
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ad9fa86c-c2cf-4892-90f8-bc43e738932f",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "bcb35bd2-92ba-40c2-a91e-cb652620197f",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
