@@ -1,0 +1,15 @@
+{
+  "id": "b1634c02-bec2-444a-98ee-990ff20b4dc8",
+  "name": "ELT_QA",
+  "values": [
+    {
+      "key": "URL",
+      "value": "https://games-qa.becker.com",
+      "enabled": true,
+      "type": "text"
+    }
+  ],
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2018-03-27T16:28:06.047Z",
+  "_postman_exported_using": "Postman/6.0.8"
+}
